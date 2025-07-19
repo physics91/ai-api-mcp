@@ -345,6 +345,29 @@ Enable debug logging in various tools:
    - Avoid exposing to public networks
    - Use firewall rules if needed
 
+## Notes on Other AI Providers
+
+### Google Gemini
+
+Unlike Claude, Google Gemini does not have native MCP support:
+
+- **No Gemini CLI**: Google does not provide a standalone Gemini CLI tool
+- **Google Cloud CLI**: Gemini is accessed through `gcloud` (Google Cloud SDK) which does not support MCP
+- **Solution**: Use this AI API MCP Server to access Gemini models through a unified MCP interface
+
+This is why the AI API MCP Server is particularly useful - it provides MCP compatibility for AI providers that don't natively support it, including:
+- Google Gemini
+- OpenAI GPT
+- xAI Grok
+
+### OpenAI
+
+Similar to Gemini, OpenAI does not provide native MCP support:
+
+- **No OpenAI CLI with MCP**: OpenAI's CLI tools do not support the Model Context Protocol
+- **Direct API only**: OpenAI models are accessed through their REST API
+- **Solution**: Use this AI API MCP Server to bridge OpenAI models to MCP-compatible tools
+
 ## Additional Resources
 
 - [Model Context Protocol Documentation](https://modelcontextprotocol.io)
