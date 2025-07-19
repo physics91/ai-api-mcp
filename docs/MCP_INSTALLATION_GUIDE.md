@@ -41,9 +41,32 @@ GROK_API_KEY=your_grok_api_key_here
 
 ## Claude Code (CLI)
 
-Claude Code uses a dedicated configuration file for MCP servers in the project root directory.
+Claude Code provides two ways to configure MCP servers: using configuration files or CLI commands.
 
-### Configuration Steps
+### Method 1: Using CLI Commands (Recommended)
+
+The easiest way to add an MCP server in Claude Code is using the built-in commands:
+
+```bash
+# Add MCP server with environment variables
+claude mcp add ai-api \
+  --command "npx" \
+  --args "@ai-api/mcp-server" \
+  --env OPENAI_API_KEY=your-openai-key \
+  --env ANTHROPIC_API_KEY=your-anthropic-key \
+  --env GOOGLE_API_KEY=your-google-key \
+  --env GROK_API_KEY=your-grok-key
+
+# List configured MCP servers
+claude mcp list
+
+# Remove an MCP server
+claude mcp remove ai-api
+```
+
+### Method 2: Configuration File
+
+Alternatively, you can manually create a configuration file in your project root:
 
 1. **Create configuration file** in your project root:
    Create a file named `claude_mcp_config.json` in the root directory of your project.
@@ -70,6 +93,7 @@ Claude Code uses a dedicated configuration file for MCP servers in the project r
    - The configuration file must be named `claude_mcp_config.json` (not `.claude/settings.json`)
    - Place it in the project root directory
    - API keys can be set in the `env` section or in a `.env` file in the same directory
+   - Using CLI commands is preferred as they handle file creation and formatting automatically
 
 ## Claude Desktop
 
