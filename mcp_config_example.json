@@ -1,11 +1,13 @@
 {
   "mcpServers": {
     "ai-api": {
-      "command": "python",
-      "args": ["-m", "src.server"],
-      "cwd": "/path/to/ai-api-mcp",
+      "command": "npx",
+      "args": ["@ai-api/mcp-server"],
       "env": {
-        "PYTHONPATH": "/path/to/ai-api-mcp"
+        "OPENAI_API_KEY": "your-openai-key",
+        "ANTHROPIC_API_KEY": "your-anthropic-key", 
+        "GOOGLE_API_KEY": "your-google-key",
+        "GROK_API_KEY": "your-grok-key"
       }
     }
   }

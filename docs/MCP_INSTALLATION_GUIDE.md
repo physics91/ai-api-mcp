@@ -4,7 +4,7 @@ This guide provides comprehensive instructions for installing and configuring th
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
-- [AI API MCP Server Setup](#ai-api-mcp-server-setup)
+- [Quick Start](#quick-start)
 - [Claude Code (CLI)](#claude-code-cli)
 - [Claude Desktop](#claude-desktop)
 - [Cursor IDE](#cursor-ide)
@@ -15,30 +15,21 @@ This guide provides comprehensive instructions for installing and configuring th
 ## Prerequisites
 
 Before installing MCP servers, ensure you have:
-1. **Node.js** (v16 or higher) - Required for running MCP servers
-2. **Python** (3.10 or higher) - Required for AI API MCP Server
-3. **Git** - For cloning repositories
-4. Administrator/root access to modify configuration files
+1. **Node.js** (v16 or higher) - Required for running NPX
+2. Administrator/root access to modify configuration files (for some tools)
 
-## AI API MCP Server Setup
+## Quick Start
 
-First, set up the AI API MCP Server that will be used by all tools:
-
-### 1. Clone and Install
+The AI API MCP Server can be run instantly using NPX without any installation:
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/ai-api-mcp.git
-cd ai-api-mcp
-
-# Install dependencies
-chmod +x install.sh
-./install.sh
+# Run directly with NPX - no installation needed!
+npx @ai-api/mcp-server
 ```
 
-### 2. Configure API Keys
+### Configure API Keys
 
-Create a `.env` file in the project root:
+Create a `.env` file in your current directory or set environment variables:
 
 ```env
 # AI API Keys
@@ -46,19 +37,6 @@ OPENAI_API_KEY=your_openai_api_key_here
 ANTHROPIC_API_KEY=your_anthropic_api_key_here
 GOOGLE_API_KEY=your_google_api_key_here
 GROK_API_KEY=your_grok_api_key_here
-```
-
-### 3. Test the Server
-
-```bash
-# Run the server
-./run.sh
-
-# Or using Node.js
-node run.js
-
-# Or using Python
-python -m src.server
 ```
 
 ## Claude Code (CLI)
@@ -75,27 +53,13 @@ Claude Code uses a dedicated configuration file for MCP servers in the project r
    {
      "mcpServers": {
        "ai-api": {
-         "command": "python",
-         "args": ["-m", "src.server"],
-         "cwd": "/path/to/ai-api-mcp",
+         "command": "npx",
+         "args": ["@ai-api/mcp-server"],
          "env": {
-           "PYTHONPATH": "/path/to/ai-api-mcp"
-         }
-       }
-     }
-   }
-   ```
-
-   **Windows example**:
-   ```json
-   {
-     "mcpServers": {
-       "ai-api": {
-         "command": "python",
-         "args": ["-m", "src.server"],
-         "cwd": "C:\\path\\to\\ai-api-mcp",
-         "env": {
-           "PYTHONPATH": "C:\\path\\to\\ai-api-mcp"
+           "OPENAI_API_KEY": "your-openai-key",
+           "ANTHROPIC_API_KEY": "your-anthropic-key",
+           "GOOGLE_API_KEY": "your-google-key",
+           "GROK_API_KEY": "your-grok-key"
          }
        }
      }
@@ -105,8 +69,7 @@ Claude Code uses a dedicated configuration file for MCP servers in the project r
 3. **Important notes**:
    - The configuration file must be named `claude_mcp_config.json` (not `.claude/settings.json`)
    - Place it in the project root directory
-   - Use absolute paths for the `cwd` and `PYTHONPATH` values
-   - On Windows, use double backslashes (`\\`) or forward slashes (`/`) in paths
+   - API keys can be set in the `env` section or in a `.env` file in the same directory
 
 ## Claude Desktop
 
@@ -124,30 +87,20 @@ Claude Desktop uses a dedicated configuration file for MCP servers.
    {
      "mcpServers": {
        "ai-api": {
-         "command": "python",
-         "args": ["-m", "src.server"],
-         "cwd": "/path/to/ai-api-mcp",
+         "command": "npx",
+         "args": ["@ai-api/mcp-server"],
          "env": {
-           "PYTHONPATH": "/path/to/ai-api-mcp"
+           "OPENAI_API_KEY": "your-openai-key",
+           "ANTHROPIC_API_KEY": "your-anthropic-key",
+           "GOOGLE_API_KEY": "your-google-key",
+           "GROK_API_KEY": "your-grok-key"
          }
        }
      }
    }
    ```
 
-3. **Alternative NPX configuration**:
-   ```json
-   {
-     "mcpServers": {
-       "ai-api": {
-         "command": "npx",
-         "args": ["@ai-api/mcp-server"]
-       }
-     }
-   }
-   ```
-
-4. **Restart Claude Desktop** to apply changes
+3. **Restart Claude Desktop** to apply changes
 
 ### Using Desktop Extensions (2025 Update)
 
@@ -170,11 +123,13 @@ Cursor IDE supports MCP servers through configuration files.
      "servers": [
        {
          "name": "ai-api-mcp",
-         "command": ["python"],
-         "args": ["-m", "src.server"],
-         "cwd": "/path/to/ai-api-mcp",
+         "command": ["npx"],
+         "args": ["@ai-api/mcp-server"],
          "env": {
-           "PYTHONPATH": "/path/to/ai-api-mcp"
+           "OPENAI_API_KEY": "your-openai-key",
+           "ANTHROPIC_API_KEY": "your-anthropic-key",
+           "GOOGLE_API_KEY": "your-google-key",
+           "GROK_API_KEY": "your-grok-key"
          },
          "enabled": true
        }
@@ -208,11 +163,13 @@ VS Code supports MCP servers through GitHub Copilot Chat with MCP extension capa
    {
      "mcpServers": {
        "ai-api": {
-         "command": "python",
-         "args": ["-m", "src.server"],
-         "cwd": "/path/to/ai-api-mcp",
+         "command": "npx",
+         "args": ["@ai-api/mcp-server"],
          "env": {
-           "PYTHONPATH": "/path/to/ai-api-mcp"
+           "OPENAI_API_KEY": "your-openai-key",
+           "ANTHROPIC_API_KEY": "your-anthropic-key",
+           "GOOGLE_API_KEY": "your-google-key",
+           "GROK_API_KEY": "your-grok-key"
          }
        }
      }
@@ -252,8 +209,7 @@ Continue doesn't directly support MCP command execution but can connect to runni
 
 1. **Start AI API MCP Server**:
    ```bash
-   cd /path/to/ai-api-mcp
-   ./run.sh
+   npx @ai-api/mcp-server --port 8000
    ```
 
 2. **Configure Continue** in `.continue/config.json`:
@@ -286,11 +242,10 @@ For any tool that supports MCP, the general pattern is:
 {
   "mcp" or "mcpServers": {
     "server-name": {
-      "command": "executable-path",
-      "args": ["argument1", "argument2"],
-      "cwd": "working-directory",
+      "command": "npx",
+      "args": ["@ai-api/mcp-server"],
       "env": {
-        "ENV_VAR": "value"
+        "API_KEY": "value"
       }
     }
   }
@@ -302,13 +257,13 @@ For any tool that supports MCP, the general pattern is:
 ### Common Issues and Solutions
 
 1. **Server not starting**:
-   - Verify Python/Node.js is installed: `python --version` or `node --version`
-   - Check file paths are absolute, not relative
-   - Ensure all required dependencies are installed
+   - Verify Node.js is installed: `node --version`
+   - Check NPX is available: `npx --version`
+   - Ensure internet connection for NPX to download packages
 
 2. **API key errors**:
-   - Verify `.env` file exists in the AI API MCP directory
-   - Check API keys are valid and properly formatted
+   - Verify API keys are valid and properly formatted
+   - Check environment variables or `.env` file
    - Ensure no extra spaces or quotes around keys
 
 3. **Configuration not recognized**:
@@ -317,9 +272,9 @@ For any tool that supports MCP, the general pattern is:
    - Verify configuration file is in the correct location
 
 4. **Permission errors**:
-   - Run with appropriate permissions
-   - Check file ownership and permissions
    - On Windows, try running as administrator
+   - Check file ownership and permissions
+   - Ensure NPX can write to temporary directories
 
 ### Debug Mode
 
@@ -333,16 +288,14 @@ Enable debug logging in various tools:
 
 1. **Test MCP server directly**:
    ```bash
-   # Start server
-   python -m src.server
-   
-   # In another terminal, test with curl
-   curl http://localhost:8000/health
+   # Run with verbose output
+   npx @ai-api/mcp-server --verbose
    ```
 
-2. **Check MCP server logs**:
+2. **Check health endpoint**:
    ```bash
-   tail -f ~/.ai-api-mcp/logs/server.log
+   # If server exposes HTTP endpoint
+   curl http://localhost:8000/health
    ```
 
 3. **Verify in application**:
@@ -356,16 +309,17 @@ Enable debug logging in various tools:
    - Never commit API keys to version control
    - Use environment variables or `.env` files
    - Rotate keys regularly
+   - Consider using a secrets management service
 
 2. **Server Security**:
-   - Only install MCP servers from trusted sources
-   - Review server code before installation
-   - Limit network exposure (use localhost when possible)
+   - Only use official NPX packages
+   - Review package permissions before running
+   - Keep Node.js updated for security patches
 
-3. **Permission Management**:
-   - Run servers with minimal required permissions
-   - Use separate user accounts for production
-   - Audit server access logs regularly
+3. **Network Security**:
+   - MCP servers typically run locally
+   - Avoid exposing to public networks
+   - Use firewall rules if needed
 
 ## Additional Resources
 
