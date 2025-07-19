@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ai-api": {
+      "command": "python",
+      "args": ["-m", "src.server"],
+      "cwd": "C:\\Users\\ASUS\\Documents\\GitHub\\ai-api-mcp",
+      "env": {
+        "PYTHONPATH": "C:\\Users\\ASUS\\Documents\\GitHub\\ai-api-mcp"
+      }
+    }
+  }
+}

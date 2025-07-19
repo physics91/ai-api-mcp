@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "ai-api": {
+      "command": "python",
+      "args": ["-m", "src.server"],
+      "cwd": "/path/to/ai-api-mcp",
+      "env": {
+        "PYTHONPATH": "/path/to/ai-api-mcp"
+      }
+    }
+  }
+}

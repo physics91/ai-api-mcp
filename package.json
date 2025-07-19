@@ -1,0 +1,24 @@
+{
+  "name": "@ai-api/mcp-server",
+  "version": "0.2.0",
+  "description": "MCP server for integrating multiple AI APIs",
+  "type": "module",
+  "bin": {
+    "ai-api-mcp": "./run.js"
+  },
+  "scripts": {
+    "start": "node run.js",
+    "docker:build": "docker build -t ai-api-mcp .",
+    "docker:run": "docker run -it --rm --env-file .env ai-api-mcp",
+    "docker:compose": "docker-compose up"
+  },
+  "keywords": ["mcp", "ai", "openai", "anthropic", "gemini", "grok"],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "cross-spawn": "^7.0.3"
+  }
+}

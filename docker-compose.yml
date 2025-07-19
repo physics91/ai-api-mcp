@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  ai-api-mcp:
+    build: .
+    container_name: ai-api-mcp-server
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - GROK_API_KEY=${GROK_API_KEY}
+      - MAX_RETRIES=${MAX_RETRIES:-3}
+      - RETRY_DELAY=${RETRY_DELAY:-1.0}
+    volumes:
+      - ./src:/app/src:ro
+      - ./.env:/app/.env:ro
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
