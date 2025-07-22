@@ -117,10 +117,10 @@ class ProviderTester:
         
         # Test models for each provider
         test_models = {
-            AIProvider.OPENAI: ["gpt-4", "gpt-3.5-turbo", "invalid-model"],
-            AIProvider.ANTHROPIC: ["claude-3-sonnet-20240229", "claude-3-haiku-20240307", "invalid-model"],
-            AIProvider.GOOGLE: ["gemini-pro", "gemini-1.5-pro", "invalid-model"],
-            AIProvider.GROK: ["grok-2", "grok-2-mini", "invalid-model"]
+            AIProvider.OPENAI: ["gpt-4.1", "gpt-4o", "invalid-model"],
+            AIProvider.ANTHROPIC: ["claude-opus-4-20250514", "claude-3-haiku-20240307", "invalid-model"],
+            AIProvider.GOOGLE: ["gemini-2.5-flash", "gemini-1.5-pro", "invalid-model"],
+            AIProvider.GROK: ["grok-4", "grok-2", "invalid-model"]
         }
         
         for provider_enum in providers:
@@ -152,10 +152,10 @@ class ProviderTester:
         
         # Test models for each provider
         test_models = {
-            AIProvider.OPENAI: "gpt-3.5-turbo",
-            AIProvider.ANTHROPIC: "claude-3-haiku-20240307",
-            AIProvider.GOOGLE: "gemini-pro",
-            AIProvider.GROK: "grok-2-mini"
+            AIProvider.OPENAI: "gpt-4.1-mini",
+            AIProvider.ANTHROPIC: "claude-sonnet-4-20250514",
+            AIProvider.GOOGLE: "gemini-2.5-flash",
+            AIProvider.GROK: "grok-4"
         }
         
         for provider_enum in providers:

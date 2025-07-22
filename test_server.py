@@ -66,10 +66,10 @@ async def test_providers():
 
     # Test models for each provider
     test_models = {
-        "openai": ["gpt-3.5-turbo", "gpt-4"],
-        "anthropic": ["claude-3-haiku-20240307", "claude-3-sonnet-20240229"],
-        "google": ["gemini-pro", "gemini-1.5-pro"],
-        "grok": ["grok-2-mini", "grok-2"]
+        "openai": ["gpt-4.1", "gpt-4.1-mini"],
+        "anthropic": ["claude-opus-4-20250514", "claude-sonnet-4-20250514"],
+        "google": ["gemini-2.5-pro", "gemini-2.5-flash"],
+        "grok": ["grok-4", "grok-3"]
     }
 
     chat_tested = False

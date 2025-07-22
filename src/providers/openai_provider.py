@@ -28,23 +28,17 @@ class OpenAIProvider(AIProviderBase):
             "max_output_tokens": 8192,
             "features": ["chat", "code", "massive_context", "ultra_fast"]
         },
-        "o3": {
-            "name": "O3",
+        "o3-mini": {
+            "name": "O3 Mini",
             "context_window": 200000,
-            "max_output_tokens": 100000,
-            "features": ["chat", "code", "advanced_reasoning", "agent", "tools"]
+            "max_output_tokens": 65536,
+            "features": ["chat", "code", "reasoning", "advanced_reasoning", "fast"]
         },
-        "o3-pro": {
-            "name": "O3 Pro",
-            "context_window": 200000,
-            "max_output_tokens": 100000,
-            "features": ["chat", "code", "advanced_reasoning", "agent", "tools", "deep_think"]
-        },
-        "o4-mini": {
-            "name": "O4 Mini",
-            "context_window": 200000,
-            "max_output_tokens": 50000,
-            "features": ["chat", "code", "reasoning", "agent", "tools", "fast"]
+        "o1-mini": {
+            "name": "O1 Mini",
+            "context_window": 128000,
+            "max_output_tokens": 65536,
+            "features": ["chat", "code", "reasoning", "advanced_reasoning"]
         },
         "gpt-4o": {
             "name": "GPT-4o",
@@ -68,7 +62,7 @@ class OpenAIProvider(AIProviderBase):
             "name": "GPT-3.5 Turbo",
             "context_window": 16385,
             "max_output_tokens": 4096,
-            "features": ["chat", "code", "fast", "legacy"]
+            "features": ["chat", "code", "fast"]
         }
     }
     
@@ -100,18 +94,32 @@ class OpenAIProvider(AIProviderBase):
         ]
         
         try:
+            # Reasoning models (o3-mini, o1-mini) use different parameters
+            is_reasoning_model = model.startswith(('o3-', 'o1-'))
+
             if stream:
                 return self._stream_chat(
-                    openai_messages, model, temperature, max_tokens
+                    openai_messages, model, temperature, max_tokens, is_reasoning_model
                 )
             else:
-                response = await self.client.chat.completions.create(
-                    model=model,
-                    messages=openai_messages,
-                    temperature=temperature,
-                    max_tokens=max_tokens
-                )
-                
+                # Build parameters based on model type
+                params = {
+                    "model": model,
+                    "messages": openai_messages,
+                }
+
+                if is_reasoning_model:
+                    # Reasoning models use max_completion_tokens and don't support temperature
+                    if max_tokens:
+                        params["max_completion_tokens"] = max_tokens
+                else:
+                    # Regular models use max_tokens and temperature
+                    params["temperature"] = temperature
+                    if max_tokens:
+                        params["max_tokens"] = max_tokens
+
+                response = await self.client.chat.completions.create(**params)
+
                 return ChatResponse(
                     content=response.choices[0].message.content,
                     model=model,
@@ -130,17 +138,29 @@ class OpenAIProvider(AIProviderBase):
         messages: List[Dict],
         model: str,
         temperature: float,
-        max_tokens: Optional[int]
+        max_tokens: Optional[int],
+        is_reasoning_model: bool = False
     ) -> AsyncGenerator[str, None]:
         """Stream chat responses"""
         try:
-            stream = await self.client.chat.completions.create(
-                model=model,
-                messages=messages,
-                temperature=temperature,
-                max_tokens=max_tokens,
-                stream=True
-            )
+            # Build parameters based on model type
+            params = {
+                "model": model,
+                "messages": messages,
+                "stream": True
+            }
+
+            if is_reasoning_model:
+                # Reasoning models use max_completion_tokens and don't support temperature
+                if max_tokens:
+                    params["max_completion_tokens"] = max_tokens
+            else:
+                # Regular models use max_tokens and temperature
+                params["temperature"] = temperature
+                if max_tokens:
+                    params["max_tokens"] = max_tokens
+
+            stream = await self.client.chat.completions.create(**params)
             
             async for chunk in stream:
                 if chunk.choices[0].delta.content is not None:
