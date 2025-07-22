@@ -29,12 +29,12 @@ Choose your preferred installation method:
 
 #### Using NPX (Recommended)
 ```bash
-npx @ai-api/mcp-server
+npx @physics91org/ai-api-mcp
 ```
 
 #### Using Bun
 ```bash
-bunx @ai-api/mcp-server
+bunx @physics91org/ai-api-mcp
 ```
 
 #### Using Docker
@@ -142,10 +142,10 @@ Choose your preferred method to run the server:
 #### Using NPX/Bunx (No installation required)
 ```bash
 # With npx
-npx @ai-api/mcp-server
+npx @physics91org/ai-api-mcp
 
 # With bunx  
-bunx @ai-api/mcp-server
+bunx @physics91org/ai-api-mcp
 ```
 
 #### Using Node.js
@@ -289,7 +289,7 @@ This server works with multiple MCP-supporting tools. See our [**MCP Installatio
   "mcpServers": {
     "ai-api": {
       "command": "npx",
-      "args": ["@ai-api/mcp-server"],
+      "args": ["@physics91org/ai-api-mcp"],
       "env": {
         "OPENAI_API_KEY": "your-key",
         "ANTHROPIC_API_KEY": "your-key",

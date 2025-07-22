@@ -382,7 +382,7 @@ A:
 pip install --upgrade ai-api-mcp
 
 # For npm
-npm update @ai-api/mcp-server
+npm update @physics91org/ai-api-mcp
 
 # For development
 git pull

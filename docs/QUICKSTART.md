@@ -6,7 +6,7 @@ Get up and running with AI API MCP Server in 5 minutes!
 
 ```bash
 # Run without installation
-npx @ai-api/mcp-server
+npx @physics91org/ai-api-mcp
 ```
 
 That's it! The server will:
@@ -41,7 +41,7 @@ GROK_API_KEY=xai-...
   "mcpServers": {
     "ai-api": {
       "command": "npx",
-      "args": ["@ai-api/mcp-server"]
+      "args": ["@physics91org/ai-api-mcp"]
     }
   }
 }
@@ -61,7 +61,7 @@ Use the AI API tool to ask GPT-4: "What is the meaning of life?"
 npm install -g @modelcontextprotocol/inspector
 
 # Connect to the server
-mcp-inspector npx @ai-api/mcp-server
+mcp-inspector npx @physics91org/ai-api-mcp
 
 # In the inspector, try:
 # 1. Click "list_models" to see available models
@@ -120,7 +120,7 @@ docker run -it --rm \
 
 ```bash
 # Install globally
-npm install -g @ai-api/mcp-server
+npm install -g @physics91org/ai-api-mcp
 
 # Run from anywhere
 ai-api-mcp
@@ -130,7 +130,7 @@ ai-api-mcp
 
 ```bash
 # List available models
-mcp-inspector npx @ai-api/mcp-server
+mcp-inspector npx @physics91org/ai-api-mcp
 # Then call: list_models()
 
 # Check server health

@@ -24,7 +24,7 @@ The AI API MCP Server can be run instantly using NPX without any installation:
 
 ```bash
 # Run directly with NPX - no installation needed!
-npx @ai-api/mcp-server
+npx @physics91org/ai-api-mcp
 ```
 
 ### Configure API Keys
@@ -51,7 +51,7 @@ The easiest way to add an MCP server in Claude Code is using the built-in comman
 # Add MCP server with environment variables
 claude mcp add ai-api \
   --command "npx" \
-  --args "@ai-api/mcp-server" \
+  --args "@physics91org/ai-api-mcp" \
   --env OPENAI_API_KEY=your-openai-key \
   --env ANTHROPIC_API_KEY=your-anthropic-key \
   --env GOOGLE_API_KEY=your-google-key \
@@ -77,7 +77,7 @@ Alternatively, you can manually create a configuration file in your project root
      "mcpServers": {
        "ai-api": {
          "command": "npx",
-         "args": ["@ai-api/mcp-server"],
+         "args": ["@physics91org/ai-api-mcp"],
          "env": {
            "OPENAI_API_KEY": "your-openai-key",
            "ANTHROPIC_API_KEY": "your-anthropic-key",
@@ -112,7 +112,7 @@ Claude Desktop uses a dedicated configuration file for MCP servers.
      "mcpServers": {
        "ai-api": {
          "command": "npx",
-         "args": ["@ai-api/mcp-server"],
+         "args": ["@physics91org/ai-api-mcp"],
          "env": {
            "OPENAI_API_KEY": "your-openai-key",
            "ANTHROPIC_API_KEY": "your-anthropic-key",
@@ -148,7 +148,7 @@ Cursor IDE supports MCP servers through configuration files.
        {
          "name": "ai-api-mcp",
          "command": ["npx"],
-         "args": ["@ai-api/mcp-server"],
+         "args": ["@physics91org/ai-api-mcp"],
          "env": {
            "OPENAI_API_KEY": "your-openai-key",
            "ANTHROPIC_API_KEY": "your-anthropic-key",
@@ -188,7 +188,7 @@ VS Code supports MCP servers through GitHub Copilot Chat with MCP extension capa
      "mcpServers": {
        "ai-api": {
          "command": "npx",
-         "args": ["@ai-api/mcp-server"],
+         "args": ["@physics91org/ai-api-mcp"],
          "env": {
            "OPENAI_API_KEY": "your-openai-key",
            "ANTHROPIC_API_KEY": "your-anthropic-key",
@@ -210,7 +210,7 @@ VS Code supports MCP servers through GitHub Copilot Chat with MCP extension capa
      "chat.mcp.servers": {
        "ai-api": {
          "command": "npx",
-         "args": ["@ai-api/mcp-server"]
+         "args": ["@physics91org/ai-api-mcp"]
        }
      }
    }
@@ -233,7 +233,7 @@ Continue doesn't directly support MCP command execution but can connect to runni
 
 1. **Start AI API MCP Server**:
    ```bash
-   npx @ai-api/mcp-server --port 8000
+   npx @physics91org/ai-api-mcp --port 8000
    ```
 
 2. **Configure Continue** in `.continue/config.json`:
@@ -267,7 +267,7 @@ For any tool that supports MCP, the general pattern is:
   "mcp" or "mcpServers": {
     "server-name": {
       "command": "npx",
-      "args": ["@ai-api/mcp-server"],
+      "args": ["@physics91org/ai-api-mcp"],
       "env": {
         "API_KEY": "value"
       }
@@ -313,7 +313,7 @@ Enable debug logging in various tools:
 1. **Test MCP server directly**:
    ```bash
    # Run with verbose output
-   npx @ai-api/mcp-server --verbose
+   npx @physics91org/ai-api-mcp --verbose
    ```
 
 2. **Check health endpoint**:

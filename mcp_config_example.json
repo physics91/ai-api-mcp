@@ -2,7 +2,7 @@
   "mcpServers": {
     "ai-api": {
       "command": "npx",
-      "args": ["@ai-api/mcp-server"],
+      "args": ["@physics91org/ai-api-mcp"],
       "env": {
         "OPENAI_API_KEY": "your-openai-key",
         "ANTHROPIC_API_KEY": "your-anthropic-key", 
