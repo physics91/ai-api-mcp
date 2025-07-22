@@ -237,36 +237,69 @@ await mcp.generate(
 ## Supported Models (2025)
 
 ### OpenAI
-- **gpt-4.1** - 1M+ context, multimodal with massive context
+#### Flagship GPT Models
+- **gpt-4.1** - 1M context, multimodal with massive context
+- **gpt-4o** - 128K context, fast, intelligent, flexible
+- **gpt-4o-audio-preview** - 128K context, audio inputs/outputs
+- **chatgpt-4o-latest** - 128K context, ChatGPT version
+
+#### Cost-Optimized Models
 - **gpt-4.1-mini** - 1M context, fast multimodal
 - **gpt-4.1-nano** - 1M context, ultra-fast
-- **o3** - 200K context, advanced reasoning
+- **gpt-4o-mini** - 128K context, fast and affordable
+- **gpt-4o-mini-audio-preview** - 128K context, audio support
+
+#### Reasoning Models (o-series)
+- **o4-mini** - 200K context, faster reasoning
+- **o3** - 200K context, most powerful reasoning
 - **o3-pro** - 200K context, deep thinking
-- **o4-mini** - 200K context, fast reasoning
-- gpt-4o, gpt-4o-mini, gpt-4-turbo, gpt-3.5-turbo
+- **o3-mini** - 200K context, small reasoning alternative
+- **o1** - 200K context, previous reasoning model
+- **o1-mini** - 128K context, small reasoning alternative
+- **o1-pro** - 200K context, enhanced reasoning
+
+#### Older Models
+- **gpt-4-turbo**, **gpt-4**, **gpt-3.5-turbo**
 
 ### Anthropic
-- **claude-opus-4** - Hybrid reasoning with deep thinking
-- **claude-sonnet-4** - Hybrid reasoning
-- **claude-3.7-sonnet** - Flexible reasoning
-- **claude-3.5-sonnet** - Computer use capabilities
-- **claude-3.5-haiku** - Fast and efficient
-- claude-3-opus, claude-3-sonnet, claude-3-haiku
+#### Claude 4 Models (Latest Generation)
+- **claude-opus-4-20250514** - Most powerful and capable model (32K output)
+- **claude-sonnet-4-20250514** - High-performance with exceptional reasoning (64K output)
+
+#### Claude 3.x Models
+- **claude-3-7-sonnet-20250219** - High intelligence with extended thinking (64K output)
+- **claude-3-5-sonnet-20241022** - Previous intelligent model v2 (8K output)
+- **claude-3-5-sonnet-20240620** - Previous intelligent model (8K output)
+- **claude-3-5-haiku-20241022** - Fastest model with intelligence (8K output)
+- **claude-3-haiku-20240307** - Fast and compact for quick responses (4K output)
 
 ### Google
-- **gemini-2.5-pro** - 1M context, multimodal with deep thinking
-- **gemini-2.5-flash** - 1M context, fast advanced reasoning
-- **gemini-2.5-flash-lite** - High throughput, ultra-fast
-- **gemini-2.0-pro** - 1M context, agent capabilities
-- **gemini-2.0-flash** - 1M context, real-time multimodal
-- gemini-1.5-pro, gemini-1.5-flash
+#### Gemini 2.5 Series (Latest with Thinking)
+- **gemini-2.5-pro** - 1M context, advanced reasoning with deep thinking
+- **gemini-2.5-flash** - 1M context, fast advanced reasoning with thinking
+- **gemini-2.5-flash-lite-preview-06-17** - 1M context, ultra-fast and cost-effective
+
+#### Gemini 2.0 Series
+- **gemini-2.0-flash** - 1M context, real-time multimodal capabilities
+- **gemini-2.0-flash-lite** - 1M context, cost-effective and fast
+
+#### Gemini 1.5 Series (Deprecated)
+- **gemini-1.5-flash** - 1M context, fast multimodal (deprecated)
+- **gemini-1.5-flash-8b** - 1M context, high volume processing (deprecated)
+- **gemini-1.5-pro** - 2M context, complex reasoning (deprecated)
 
 ### xAI
-- **grok-4** - 256K context (API), 130K (standard), book/codebase analysis
-- **grok-3** - 128K context, vision capabilities
-- **grok-2** - 131K context, vision, function calling
-- **grok-2-mini** - 131K context, fast and efficient
-- grok-1.5, grok-beta
+#### Grok 4 Series (Latest Reasoning Models)
+- **grok-4-0709** - 256K context, advanced reasoning with function calling
+
+#### Grok 3 Series
+- **grok-3** - 131K context, vision and function calling capabilities
+- **grok-3-mini** - 131K context, fast and efficient reasoning
+- **grok-3-fast** - 131K context, high-speed processing with regional availability
+- **grok-3-mini-fast** - 131K context, ultra-fast efficient processing
+
+#### Grok 2 Series (Vision Models)
+- **grok-2-vision-1212** - 32K context, vision capabilities with function calling
 
 ## MCP Client Support
 

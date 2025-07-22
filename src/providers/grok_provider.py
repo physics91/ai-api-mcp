@@ -10,47 +10,46 @@ class GrokProvider(AIProviderBase):
     """xAI Grok provider implementation"""
     
     MODELS = {
-        "grok-4": {
+        # Grok 4 Series (Latest Reasoning Models)
+        "grok-4-0709": {
             "name": "Grok 4",
             "context_window": 256000,
             "max_output_tokens": 32768,
-            "features": ["chat", "code", "reasoning", "extended_context", "book_analysis", "codebase_analysis"]
+            "features": ["chat", "code", "reasoning", "advanced_reasoning", "function_calling", "structured_outputs"]
         },
-        "grok-4-standard": {
-            "name": "Grok 4 Standard",
-            "context_window": 130000,
-            "max_output_tokens": 16384,
-            "features": ["chat", "code", "reasoning", "extended_context"]
-        },
+        
+        # Grok 3 Series
         "grok-3": {
             "name": "Grok 3",
-            "context_window": 128000,
-            "max_output_tokens": 8192,
-            "features": ["chat", "code", "reasoning", "vision"]
-        },
-        "grok-2": {
-            "name": "Grok 2",
             "context_window": 131072,
             "max_output_tokens": 8192,
-            "features": ["chat", "code", "reasoning", "vision", "function_calling"]
+            "features": ["chat", "code", "reasoning", "vision", "function_calling", "structured_outputs"]
         },
-        "grok-2-mini": {
-            "name": "Grok 2 Mini",
+        "grok-3-mini": {
+            "name": "Grok 3 Mini",
             "context_window": 131072,
             "max_output_tokens": 8192,
             "features": ["chat", "code", "reasoning", "fast", "efficient"]
         },
-        "grok-1.5": {
-            "name": "Grok 1.5",
-            "context_window": 128000,
-            "max_output_tokens": 4096,
-            "features": ["chat", "code", "reasoning"]
-        },
-        "grok-beta": {
-            "name": "Grok Beta",
+        "grok-3-fast": {
+            "name": "Grok 3 Fast",
             "context_window": 131072,
-            "max_output_tokens": 4096,
-            "features": ["chat", "code", "reasoning", "experimental"]
+            "max_output_tokens": 8192,
+            "features": ["chat", "code", "reasoning", "fast", "regional"]
+        },
+        "grok-3-mini-fast": {
+            "name": "Grok 3 Mini Fast",
+            "context_window": 131072,
+            "max_output_tokens": 8192,
+            "features": ["chat", "code", "reasoning", "fast", "efficient", "ultra_fast"]
+        },
+        
+        # Grok 2 Series (Vision Models)
+        "grok-2-vision-1212": {
+            "name": "Grok 2 Vision",
+            "context_window": 32768,
+            "max_output_tokens": 8192,
+            "features": ["chat", "code", "reasoning", "vision", "function_calling", "structured_outputs"]
         }
     }
     
@@ -82,12 +81,18 @@ class GrokProvider(AIProviderBase):
             for msg in messages
         ]
         
+        # Check if it's a reasoning model (Grok 4)
+        is_reasoning_model = model.startswith('grok-4')
+        
         payload = {
             "model": model,
-            "messages": api_messages,
-            "temperature": temperature
+            "messages": api_messages
         }
         
+        # Reasoning models don't support temperature
+        if not is_reasoning_model:
+            payload["temperature"] = temperature
+            
         if max_tokens:
             payload["max_tokens"] = max_tokens
             

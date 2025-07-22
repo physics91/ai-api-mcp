@@ -10,47 +10,58 @@ class GeminiProvider(AIProviderBase):
     """Google Gemini provider implementation"""
     
     MODELS = {
+        # Gemini 2.5 Series (Latest with Thinking)
         "gemini-2.5-pro": {
             "name": "Gemini 2.5 Pro",
-            "context_window": 1000000,
+            "context_window": 2000000,
             "max_output_tokens": 8192,
-            "features": ["chat", "code", "vision", "audio", "video", "advanced_reasoning", "deep_think"]
+            "features": ["chat", "code", "vision", "audio", "video", "thinking", "multimodal"]
         },
         "gemini-2.5-flash": {
             "name": "Gemini 2.5 Flash",
             "context_window": 1000000,
             "max_output_tokens": 8192,
-            "features": ["chat", "code", "vision", "advanced_reasoning", "fast"]
+            "features": ["chat", "code", "vision", "audio", "video", "thinking", "fast", "multimodal"]
         },
         "gemini-2.5-flash-lite-preview-06-17": {
             "name": "Gemini 2.5 Flash Lite",
-            "context_window": 128000,
-            "max_output_tokens": 8192,
-            "features": ["chat", "code", "ultra_fast", "high_throughput"]
-        },
-        "gemini-2.0-pro": {
-            "name": "Gemini 2.0 Pro",
             "context_window": 1000000,
             "max_output_tokens": 8192,
-            "features": ["chat", "code", "vision", "reasoning", "agent"]
+            "features": ["chat", "code", "vision", "audio", "video", "ultra_fast", "cost_effective", "multimodal"]
         },
-        "gemini-2.0-flash-001": {
+        
+        # Gemini 2.0 Series
+        "gemini-2.0-flash": {
             "name": "Gemini 2.0 Flash",
             "context_window": 1000000,
             "max_output_tokens": 8192,
-            "features": ["chat", "code", "vision", "audio", "video", "realtime", "fast"]
+            "features": ["chat", "code", "vision", "audio", "video", "realtime", "fast", "multimodal"]
+        },
+        "gemini-2.0-flash-lite": {
+            "name": "Gemini 2.0 Flash Lite",
+            "context_window": 1000000,
+            "max_output_tokens": 8192,
+            "features": ["chat", "code", "vision", "audio", "video", "cost_effective", "fast", "multimodal"]
+        },
+        
+        # Gemini 1.5 Series (Deprecated)
+        "gemini-1.5-flash": {
+            "name": "Gemini 1.5 Flash",
+            "context_window": 1000000,
+            "max_output_tokens": 8192,
+            "features": ["chat", "code", "vision", "audio", "video", "fast", "multimodal", "deprecated"]
+        },
+        "gemini-1.5-flash-8b": {
+            "name": "Gemini 1.5 Flash 8B",
+            "context_window": 1000000,
+            "max_output_tokens": 8192,
+            "features": ["chat", "code", "vision", "audio", "video", "high_volume", "multimodal", "deprecated"]
         },
         "gemini-1.5-pro": {
             "name": "Gemini 1.5 Pro",
-            "context_window": 128000,
+            "context_window": 2000000,
             "max_output_tokens": 8192,
-            "features": ["chat", "code", "vision", "long_context"]
-        },
-        "gemini-1.5-flash": {
-            "name": "Gemini 1.5 Flash",
-            "context_window": 128000,
-            "max_output_tokens": 8192,
-            "features": ["chat", "code", "vision", "long_context", "fast"]
+            "features": ["chat", "code", "vision", "audio", "video", "complex_reasoning", "multimodal", "deprecated"]
         }
     }
     

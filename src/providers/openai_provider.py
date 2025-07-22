@@ -10,12 +10,33 @@ class OpenAIProvider(AIProviderBase):
     """OpenAI GPT provider implementation"""
     
     MODELS = {
+        # Flagship GPT Models
         "gpt-4.1": {
             "name": "GPT-4.1",
-            "context_window": 1047576,
+            "context_window": 1000000,
             "max_output_tokens": 32768,
             "features": ["chat", "code", "vision", "audio", "json_mode", "massive_context"]
         },
+        "gpt-4o": {
+            "name": "GPT-4o",
+            "context_window": 128000,
+            "max_output_tokens": 16384,
+            "features": ["chat", "code", "vision", "audio", "json_mode"]
+        },
+        "gpt-4o-audio-preview": {
+            "name": "GPT-4o Audio",
+            "context_window": 128000,
+            "max_output_tokens": 16384,
+            "features": ["chat", "code", "vision", "audio", "json_mode"]
+        },
+        "chatgpt-4o-latest": {
+            "name": "ChatGPT-4o",
+            "context_window": 128000,
+            "max_output_tokens": 16384,
+            "features": ["chat", "code", "vision", "audio", "json_mode"]
+        },
+        
+        # Cost-Optimized Models
         "gpt-4.1-mini": {
             "name": "GPT-4.1 Mini",
             "context_window": 1000000,
@@ -28,35 +49,75 @@ class OpenAIProvider(AIProviderBase):
             "max_output_tokens": 8192,
             "features": ["chat", "code", "massive_context", "ultra_fast"]
         },
-        "o3-mini": {
-            "name": "O3 Mini",
-            "context_window": 200000,
-            "max_output_tokens": 65536,
-            "features": ["chat", "code", "reasoning", "advanced_reasoning", "fast"]
-        },
-        "o1-mini": {
-            "name": "O1 Mini",
-            "context_window": 128000,
-            "max_output_tokens": 65536,
-            "features": ["chat", "code", "reasoning", "advanced_reasoning"]
-        },
-        "gpt-4o": {
-            "name": "GPT-4o",
-            "context_window": 128000,
-            "max_output_tokens": 16384,
-            "features": ["chat", "code", "vision", "audio", "json_mode"]
-        },
         "gpt-4o-mini": {
             "name": "GPT-4o Mini",
             "context_window": 128000,
             "max_output_tokens": 16384,
             "features": ["chat", "code", "vision", "json_mode", "fast"]
         },
+        "gpt-4o-mini-audio-preview": {
+            "name": "GPT-4o Mini Audio",
+            "context_window": 128000,
+            "max_output_tokens": 16384,
+            "features": ["chat", "code", "vision", "audio", "json_mode", "fast"]
+        },
+        
+        # Reasoning Models (o-series)
+        "o4-mini": {
+            "name": "o4-mini",
+            "context_window": 200000,
+            "max_output_tokens": 65536,
+            "features": ["chat", "code", "reasoning", "advanced_reasoning", "fast"]
+        },
+        "o3": {
+            "name": "o3",
+            "context_window": 200000,
+            "max_output_tokens": 100000,
+            "features": ["chat", "code", "reasoning", "advanced_reasoning"]
+        },
+        "o3-pro": {
+            "name": "o3-pro",
+            "context_window": 200000,
+            "max_output_tokens": 100000,
+            "features": ["chat", "code", "reasoning", "advanced_reasoning", "deep_thinking"]
+        },
+        "o3-mini": {
+            "name": "o3-mini",
+            "context_window": 200000,
+            "max_output_tokens": 65536,
+            "features": ["chat", "code", "reasoning", "advanced_reasoning", "fast"]
+        },
+        "o1": {
+            "name": "o1",
+            "context_window": 200000,
+            "max_output_tokens": 100000,
+            "features": ["chat", "code", "reasoning", "advanced_reasoning"]
+        },
+        "o1-mini": {
+            "name": "o1-mini",
+            "context_window": 128000,
+            "max_output_tokens": 65536,
+            "features": ["chat", "code", "reasoning", "advanced_reasoning"]
+        },
+        "o1-pro": {
+            "name": "o1-pro",
+            "context_window": 200000,
+            "max_output_tokens": 100000,
+            "features": ["chat", "code", "reasoning", "advanced_reasoning", "deep_thinking"]
+        },
+        
+        # Older GPT Models
         "gpt-4-turbo": {
             "name": "GPT-4 Turbo",
             "context_window": 128000,
             "max_output_tokens": 4096,
             "features": ["chat", "code", "vision", "json_mode"]
+        },
+        "gpt-4": {
+            "name": "GPT-4",
+            "context_window": 8192,
+            "max_output_tokens": 4096,
+            "features": ["chat", "code", "vision"]
         },
         "gpt-3.5-turbo": {
             "name": "GPT-3.5 Turbo",
@@ -94,8 +155,8 @@ class OpenAIProvider(AIProviderBase):
         ]
         
         try:
-            # Reasoning models (o3-mini, o1-mini) use different parameters
-            is_reasoning_model = model.startswith(('o3-', 'o1-'))
+            # Reasoning models (o-series) use different parameters
+            is_reasoning_model = model.startswith(('o1', 'o3', 'o4'))
 
             if stream:
                 return self._stream_chat(

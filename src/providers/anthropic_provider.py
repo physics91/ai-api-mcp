@@ -9,53 +9,50 @@ class AnthropicProvider(AIProviderBase):
     """Anthropic Claude provider implementation"""
     
     MODELS = {
+        # Claude 4 Models (Latest Generation)
         "claude-opus-4-20250514": {
             "name": "Claude Opus 4",
             "context_window": 200000,
-            "max_output_tokens": 8192,
-            "features": ["chat", "code", "vision", "analysis", "hybrid_reasoning", "deep_think"]
+            "max_output_tokens": 32000,
+            "features": ["chat", "code", "vision", "analysis", "extended_thinking", "multilingual"]
         },
         "claude-sonnet-4-20250514": {
             "name": "Claude Sonnet 4",
             "context_window": 200000,
-            "max_output_tokens": 8192,
-            "features": ["chat", "code", "vision", "hybrid_reasoning"]
+            "max_output_tokens": 64000,
+            "features": ["chat", "code", "vision", "extended_thinking", "multilingual"]
         },
-        "claude-3-7-sonnet-20250224": {
-            "name": "Claude 3.7 Sonnet",
+        
+        # Claude 3.x Models
+        "claude-3-7-sonnet-20250219": {
+            "name": "Claude Sonnet 3.7",
             "context_window": 200000,
-            "max_output_tokens": 8192,
-            "features": ["chat", "code", "vision", "flexible_reasoning"]
+            "max_output_tokens": 64000,
+            "features": ["chat", "code", "vision", "extended_thinking", "multilingual"]
         },
         "claude-3-5-sonnet-20241022": {
-            "name": "Claude 3.5 Sonnet",
+            "name": "Claude Sonnet 3.5 v2",
             "context_window": 200000,
             "max_output_tokens": 8192,
-            "features": ["chat", "code", "vision", "computer_use"]
+            "features": ["chat", "code", "vision", "multilingual"]
+        },
+        "claude-3-5-sonnet-20240620": {
+            "name": "Claude Sonnet 3.5",
+            "context_window": 200000,
+            "max_output_tokens": 8192,
+            "features": ["chat", "code", "vision", "multilingual"]
         },
         "claude-3-5-haiku-20241022": {
-            "name": "Claude 3.5 Haiku",
+            "name": "Claude Haiku 3.5",
             "context_window": 200000,
             "max_output_tokens": 8192,
-            "features": ["chat", "code", "fast", "efficient"]
-        },
-        "claude-3-opus-20240229": {
-            "name": "Claude 3 Opus",
-            "context_window": 200000,
-            "max_output_tokens": 4096,
-            "features": ["chat", "code", "vision", "analysis"]
-        },
-        "claude-3-sonnet-20240229": {
-            "name": "Claude 3 Sonnet",
-            "context_window": 200000,
-            "max_output_tokens": 4096,
-            "features": ["chat", "code", "vision"]
+            "features": ["chat", "code", "vision", "fast", "multilingual"]
         },
         "claude-3-haiku-20240307": {
-            "name": "Claude 3 Haiku",
+            "name": "Claude Haiku 3",
             "context_window": 200000,
             "max_output_tokens": 4096,
-            "features": ["chat", "code", "fast"]
+            "features": ["chat", "code", "vision", "fast", "multilingual"]
         }
     }
     

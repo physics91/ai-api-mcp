@@ -221,38 +221,45 @@ await mcp.generate({
 
 | Provider | Models | Context Window | Features |
 |----------|--------|----------------|----------|
-| **OpenAI** | gpt-4.1 | 1M+ | chat, code, vision, audio, json_mode, massive_context |
+| **OpenAI** | gpt-4.1 | 1M | chat, code, vision, audio, json_mode, massive_context |
+| | gpt-4o | 128K | chat, code, vision, audio, json_mode |
+| | gpt-4o-audio-preview | 128K | chat, code, vision, audio, json_mode |
+| | chatgpt-4o-latest | 128K | chat, code, vision, audio, json_mode |
 | | gpt-4.1-mini | 1M | chat, code, vision, audio, json_mode, massive_context, fast |
 | | gpt-4.1-nano | 1M | chat, code, massive_context, ultra_fast |
-| | o3 | 200K | chat, code, advanced_reasoning, agent, tools |
-| | o3-pro | 200K | chat, code, advanced_reasoning, agent, tools, deep_think |
-| | o4-mini | 200K | chat, code, reasoning, agent, tools, fast |
-| | gpt-4o | 128K | chat, code, vision, audio, json_mode |
 | | gpt-4o-mini | 128K | chat, code, vision, json_mode, fast |
+| | gpt-4o-mini-audio-preview | 128K | chat, code, vision, audio, json_mode, fast |
+| | o4-mini | 200K | chat, code, reasoning, advanced_reasoning, fast |
+| | o3 | 200K | chat, code, reasoning, advanced_reasoning |
+| | o3-pro | 200K | chat, code, reasoning, advanced_reasoning, deep_thinking |
+| | o3-mini | 200K | chat, code, reasoning, advanced_reasoning, fast |
+| | o1 | 200K | chat, code, reasoning, advanced_reasoning |
+| | o1-mini | 128K | chat, code, reasoning, advanced_reasoning |
+| | o1-pro | 200K | chat, code, reasoning, advanced_reasoning, deep_thinking |
 | | gpt-4-turbo | 128K | chat, code, vision, json_mode |
-| | gpt-3.5-turbo | 16K | chat, code, fast, legacy |
-| **Anthropic** | claude-opus-4-20250514 | 200K | chat, code, vision, analysis, hybrid_reasoning, deep_think |
-| | claude-sonnet-4-20250514 | 200K | chat, code, vision, hybrid_reasoning |
-| | claude-3-7-sonnet-20250224 | 200K | chat, code, vision, flexible_reasoning |
-| | claude-3-5-sonnet-20241022 | 200K | chat, code, vision, computer_use |
-| | claude-3-5-haiku-20241022 | 200K | chat, code, fast, efficient |
-| | claude-3-opus-20240229 | 200K | chat, code, vision, analysis |
-| | claude-3-sonnet-20240229 | 200K | chat, code, vision |
-| | claude-3-haiku-20240307 | 200K | chat, code, fast |
-| **Google** | gemini-2.5-pro | 1M | chat, code, vision, audio, video, advanced_reasoning, deep_think |
-| | gemini-2.5-flash | 1M | chat, code, vision, advanced_reasoning, fast |
-| | gemini-2.5-flash-lite-preview-06-17 | 128K | chat, code, ultra_fast, high_throughput |
-| | gemini-2.0-pro | 1M | chat, code, vision, reasoning, agent |
-| | gemini-2.0-flash-001 | 1M | chat, code, vision, audio, video, realtime, fast |
-| | gemini-1.5-pro | 128K | chat, code, vision, long_context |
-| | gemini-1.5-flash | 128K | chat, code, vision, long_context, fast |
-| **xAI** | grok-4 | 256K | chat, code, reasoning, extended_context, book_analysis, codebase_analysis |
-| | grok-4-standard | 130K | chat, code, reasoning, extended_context |
-| | grok-3 | 128K | chat, code, reasoning, vision |
-| | grok-2 | 131K | chat, code, reasoning, vision, function_calling |
-| | grok-2-mini | 131K | chat, code, reasoning, fast, efficient |
-| | grok-1.5 | 128K | chat, code, reasoning |
-| | grok-beta | 131K | chat, code, reasoning, experimental |
+| | gpt-4 | 8K | chat, code, vision |
+| | gpt-3.5-turbo | 16K | chat, code, fast |
+| **Anthropic** | claude-opus-4-20250514 | 200K | chat, code, vision, analysis, extended_thinking, multilingual |
+| | claude-sonnet-4-20250514 | 200K | chat, code, vision, extended_thinking, multilingual |
+| | claude-3-7-sonnet-20250219 | 200K | chat, code, vision, extended_thinking, multilingual |
+| | claude-3-5-sonnet-20241022 | 200K | chat, code, vision, multilingual |
+| | claude-3-5-sonnet-20240620 | 200K | chat, code, vision, multilingual |
+| | claude-3-5-haiku-20241022 | 200K | chat, code, vision, fast, multilingual |
+| | claude-3-haiku-20240307 | 200K | chat, code, vision, fast, multilingual |
+| **Google** | gemini-2.5-pro | 2M | chat, code, vision, audio, video, thinking, multimodal |
+| | gemini-2.5-flash | 1M | chat, code, vision, audio, video, thinking, fast, multimodal |
+| | gemini-2.5-flash-lite-preview-06-17 | 1M | chat, code, vision, audio, video, ultra_fast, cost_effective, multimodal |
+| | gemini-2.0-flash | 1M | chat, code, vision, audio, video, realtime, fast, multimodal |
+| | gemini-2.0-flash-lite | 1M | chat, code, vision, audio, video, cost_effective, fast, multimodal |
+| | gemini-1.5-flash | 1M | chat, code, vision, audio, video, fast, multimodal, deprecated |
+| | gemini-1.5-flash-8b | 1M | chat, code, vision, audio, video, high_volume, multimodal, deprecated |
+| | gemini-1.5-pro | 2M | chat, code, vision, audio, video, complex_reasoning, multimodal, deprecated |
+| **xAI** | grok-4-0709 | 256K | chat, code, reasoning, advanced_reasoning, function_calling, structured_outputs |
+| | grok-3 | 131K | chat, code, reasoning, vision, function_calling, structured_outputs |
+| | grok-3-mini | 131K | chat, code, reasoning, fast, efficient |
+| | grok-3-fast | 131K | chat, code, reasoning, fast, regional |
+| | grok-3-mini-fast | 131K | chat, code, reasoning, fast, efficient, ultra_fast |
+| | grok-2-vision-1212 | 32K | chat, code, reasoning, vision, function_calling, structured_outputs |
 
 ## Error Handling
 
